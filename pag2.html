@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UsD Grife</title>
+    <link rel="shortcut icon" href="img/imagem twitch.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            background-color: #000000e9;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        .nav-menu {
+            list-style: none;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+        .nav-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-menu li {
+            text-align: center;
+            padding: 15px 0;
+        }
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+        .nav-menu .cart span {
+            background-color: #7413d4;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 100px;
+        }
+        h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+            height: auto;
+        }
+         header img {
+            width: 250px;
+            height: auto;
+            margin-top: 20px;
+        }
+        h1 {
+            margin: -50px 0 0 0;
+            height: auto;
+            text-align: center;
+        }
+        hr {
+            margin-top: 35px;
+            border: 1px solid white;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+        .card {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            height: 350px;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 4px;
+            position: relative;
+            top: 15px;
+            background-color: #fff;
+        }
+        .card h3 {
+            margin: 20px 0 10px 0;
+            font-size: 18px;
+        }
+        .card p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+        .card button {
+            background-color: #7413d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .card button:hover {
+            background-color: #5a0fb8;
+        }
+        .card a {
+            color: #7413d4;
+            text-decoration: none;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+    <img src="img/imagem twitch.png" alt="logo">
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    </header>
+    <h1>UsD Grife</h1>
+    <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="pag2.html">Produtos</a></li>
+        <li><a href="cart.html" class="cart">Carrinho <span id="cart-count">0</span></a></li>
+    </ul>
+    <hr>
+    <section class="products">
+        <div class="card">
+            <img src="img/calça feminina 1.jpg" alt="Calça Feminina 1">
+            <h3>Calça Feminina 1</h3>
+            <p>R$ 89,90</p>
+            <button onclick="addToCart('Calça Feminina 1')">Adicionar ao Carrinho</button>
+            <a href="img/calça feminina 1.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 1.jpg" alt="Camiseta 1">
+            <h3>Camiseta 1</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 1')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 1.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 2.jpg" alt="Camiseta 2">
+            <h3>Camiseta 2</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 2')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 2.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 3.jpg" alt="Camiseta 3">
+            <h3>Camiseta 3</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 3')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 3.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 4.jpg" alt="Camiseta 4">
+            <h3>Camiseta 4</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 4')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 4.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 5.jpg" alt="Camiseta 5">
+            <h3>Camiseta 5</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 5')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 5.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 6.jpg" alt="Camiseta 6">
+            <h3>Camiseta 6</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 6')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 6.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/camiseta 7.jpg" alt="Camiseta 7">
+            <h3>Camiseta 7</h3>
+            <p>R$ 49,90</p>
+            <button onclick="addToCart('Camiseta 7')">Adicionar ao Carrinho</button>
+            <a href="img/camiseta 7.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/kit feminino.jpg" alt="Kit Feminino">
+            <h3>Kit Feminino</h3>
+            <p>R$ 129,90</p>
+            <button onclick="addToCart('Kit Feminino')">Adicionar ao Carrinho</button>
+            <a href="img/kit feminino.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/kit masculino.jpg" alt="Kit Masculino">
+            <h3>Kit Masculino</h3>
+            <p>R$ 129,90</p>
+            <button onclick="addToCart('Kit Masculino')">Adicionar ao Carrinho</button>
+            <a href="img/kit masculino.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/saia feminia 1.jpg" alt="Saia Feminina 1">
+            <h3>Saia Feminina 1</h3>
+            <p>R$ 69,90</p>
+            <button onclick="addToCart('Saia Feminina 1')">Adicionar ao Carrinho</button>
+            <a href="img/saia feminia 1.jpg" target="_blank">Ver Imagem</a>
+        </div>
+        <div class="card">
+            <img src="img/saia feminina 2.jpg" alt="Saia Feminina 2">
+            <h3>Saia Feminina 2</h3>
+            <p>R$ 69,90</p>
+            <button onclick="addToCart('Saia Feminina 2')">Adicionar ao Carrinho</button>
+            <a href="img/saia feminina 2.jpg" target="_blank">Ver Imagem</a>
+        </div>
+    </section>
+    <footer>
+        <p style="text-align: center; padding: 20px; color: #ccc;">&copy; 2026 UsD Grife. Todos os direitos reservados.</p>
+        <p style="text-align: center; padding: 20px; color: #ccc;">Feito por: Julio Cesar & Nathalia Mendes</p>
+    </footer>
+    <script>
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function addToCart(product) {
+            let cart = getCart();
+            // Assuming product is the name, get price and img from DOM or hardcode
+            let price = event.target.previousElementSibling.textContent;
+            let img = event.target.nextElementSibling.href;
+            cart.push({name: product, price: price, img: img});
+            saveCart(cart);
+            updateCartCount();
+            alert(product + ' adicionado ao carrinho!');
+        }
+
+        function updateCartCount() {
+            let cart = getCart();
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Initialize cart count on page load
+        updateCartCount();
+    </script>
+</body>
+</html>
